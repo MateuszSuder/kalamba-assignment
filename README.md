@@ -15,10 +15,10 @@ The application, as the entry point, should display the articles list page. Sinc
 #### Homepage / Articles list
 
 The articles list page should display the list of articles with:
-* ArticleType title
-* ArticleType description
+* Article title
+* Article description
 * Date of publication
-* ArticleType author
+* Article author
 * Button to favorite article (with favorite count)
 
 Please ignore implementation of tags section, it is included for improved visuals of this page.
@@ -27,13 +27,13 @@ Link each article displayed to a dedicated page with the article content.
 
 Link each author displayed to a dedicated page with the author profile content.
 
-#### ArticleType
+#### Article
 
 The article page should display:
-* ArticleType title
-* ArticleType body
+* Article title
+* Article body
 * Date of publication
-* ArticleType author
+* Article author
 * Button to favorite article (with favorites count)
 * Button to follow author (with followers count)
 * _optional: Convert article body from Markdown text to HTML_
