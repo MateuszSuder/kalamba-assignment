@@ -17,6 +17,7 @@ const ArticleListPreview = ({ author, title, description, slug, createdAt, favor
 					</a>
 					<span className="date">{ dateParser(createdAt) }</span>
 				</div>
+				{ /* todo add favorite implementation */}
 				<button className="btn btn-outline-primary btn-sm pull-xs-right">
 					<i className="ion-heart" /> { favoritesCount }
 				</button>
