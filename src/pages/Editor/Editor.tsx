@@ -16,7 +16,7 @@ export default function Editor() {
             <li className="nav-item">
               <a className="nav-link" href="/#/editor">
                 <i className="ion-compose" />
-                &nbsp;New Article
+                &nbsp;New ArticleType
               </a>
             </li>
             <li className="nav-item">
@@ -46,7 +46,7 @@ export default function Editor() {
               <form>
                 <fieldset>
                   <fieldset className="form-group">
-                    <input type="text" className="form-control form-control-lg" placeholder="Article Title" />
+                    <input type="text" className="form-control form-control-lg" placeholder="ArticleType Title" />
                   </fieldset>
                   <fieldset className="form-group">
                     <input type="text" className="form-control" placeholder="What's this article about?" />
@@ -59,7 +59,7 @@ export default function Editor() {
                     <div className="tag-list" />
                   </fieldset>
                   <button className="btn btn-lg pull-xs-right btn-primary" type="button">
-                    Publish Article
+                    Publish ArticleType
                   </button>
                 </fieldset>
               </form>
