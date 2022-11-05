@@ -1,6 +1,6 @@
 import {ArticleList as ArticleListType} from "../../types/ArticleList";
 import {useEffect, useState} from "react";
-import articleList from "../../services/ArticleList";
+import articleList from "../../services/getArticleList";
 import ArticleListPreview from "../../components/ArticleList/ArticleListPreview";
 
 export default function ArticleList() {
