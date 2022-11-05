@@ -2,6 +2,7 @@ import React from 'react';
 import {Article} from "../../types/ArticleType";
 import UserAvatarLink from "../UserAvatarLink";
 import UserLink from "../UserLink";
+import FavoriteButton from "../FavoriteButton";
 
 type ArticleListPreviewType = Pick<Article, "author" | "createdAt" | "favoritesCount" | "slug" | "title" | "description">;
 
@@ -12,9 +13,7 @@ const ArticleListPreview = ({ author, title, description, slug, createdAt, favor
 				<UserAvatarLink  image={author.image} username={author.username} />
 				<UserLink username={author.username} date={createdAt} />
 				{ /* todo add favorite implementation */}
-				<button className="btn btn-outline-primary btn-sm pull-xs-right">
-					<i className="ion-heart" /> { favoritesCount }
-				</button>
+				<FavoriteButton favoriteCount={favoritesCount} wide={true} onFavorite={() => null} />
 			</div>
 			<a href={`/#/${ slug }`} className="preview-link">
 				<h1>{ title }</h1>
