@@ -1,7 +1,10 @@
 import React from 'react';
 import ChildrenProp from "../../types/ChildrenProp";
+import useAuth from "../../context/AuthContext";
+import UserAvatarLink from "../UserAvatarLink";
 
 const Layout: React.FunctionComponent<ChildrenProp> = ({ children }: ChildrenProp) => {
+	const { user } = useAuth();
 	return (
 		<>
 			<nav className="navbar navbar-light">
@@ -28,16 +31,27 @@ const Layout: React.FunctionComponent<ChildrenProp> = ({ children }: ChildrenPro
 								&nbsp;Settings
 							</a>
 						</li>
-						<li className="nav-item">
-							<a className="nav-link" href="/#/login">
-								Sign in
-							</a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link" href="/#/register">
-								Sign up
-							</a>
-						</li>
+						{
+							user ?
+								<li className="nav-item">
+									<a className="nav-link" href={`/#/profile/${user.username}`}>
+										{user.username}
+									</a>
+								</li>
+								:
+								<>
+									<li className="nav-item">
+										<a className="nav-link" href="/#/login">
+											Sign in
+										</a>
+									</li>
+									<li className="nav-item">
+										<a className="nav-link" href="/#/register">
+											Sign up
+										</a>
+									</li>
+								</>
+						}
 					</ul>
 				</div>
 			</nav>
