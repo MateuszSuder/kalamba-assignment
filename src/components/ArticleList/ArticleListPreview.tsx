@@ -12,7 +12,6 @@ const ArticleListPreview = ({ author, title, description, slug, createdAt, favor
 			<div className="article-meta">
 				<UserAvatarLink  image={author.image} username={author.username} />
 				<UserLink username={author.username} date={createdAt} />
-				{ /* todo add favorite implementation */}
 				<FavoriteButton favoriteCount={favoritesCount} wide={true} onFavorite={() => null} />
 			</div>
 			<a href={`/#/${ slug }`} className="preview-link">
