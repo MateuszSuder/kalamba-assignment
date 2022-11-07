@@ -42,7 +42,7 @@ const Profile: FunctionComponent = () => {
                   <p>
                     { profile.bio }
                   </p>
-                  <FollowButton username={profile.username} className="action-btn" />
+                  <FollowButton username={profile.username} following={profile.following} className="action-btn" />
                 </div>
               </div>
             </div>

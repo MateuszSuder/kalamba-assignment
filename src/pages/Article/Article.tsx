@@ -32,7 +32,7 @@ const Article: React.FunctionComponent = () => {
                 <div className="article-meta">
                   <UserAvatarLink  image={article.author.image} username={article.author.username || ""} />
                   <UserLink username={article.author.username} date={article.createdAt} />
-                  <FollowButton username={article.author.username} />
+                  <FollowButton username={article.author.username} following={article.author.following} />
                   &nbsp;&nbsp;
                   <FavoriteButton favoritesCount={article.favoritesCount} favorited={article.favorited} slug={article.slug} />
                 </div>
@@ -54,7 +54,7 @@ const Article: React.FunctionComponent = () => {
                 <div className="article-meta">
                   <UserAvatarLink  image={article.author.image} username={article.author.username || ""} />
                   <UserLink username={article.author.username || ""} date={article.createdAt} />
-                  <FollowButton username={article.author.username} />
+                  <FollowButton username={article.author.username} following={article.author.following} />
                   &nbsp;
                   <FavoriteButton favoritesCount={article.favoritesCount} favorited={article.favorited} slug={article.slug} />
                 </div>
