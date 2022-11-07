@@ -8,7 +8,7 @@ const ArticleList: FunctionComponent = () => {
   const { fetcher } = useAuth();
 
   useEffect(() => {
-    fetcher<ArticleListType>("/articles", "GET")
+    fetcher<ArticleListType>("articles", "GET")
       .then(data => {
         setArticles(data)
       })

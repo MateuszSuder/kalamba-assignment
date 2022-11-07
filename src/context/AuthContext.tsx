@@ -8,9 +8,7 @@ import {useHistory} from "react-router-dom";
 
 export type Fetcher = <T>(url: string, method: HttpMethods, body?: Record<string, unknown>) => Promise<T>;
 
-const AuthContext = createContext<AuthContextType>(
-	{} as AuthContextType
-)
+const AuthContext = createContext<AuthContextType>({} as AuthContextType)
 
 export const AuthProvider: FunctionComponent = ({ children }) => {
 	const [user, setUser] = useState<User | null>(null);
