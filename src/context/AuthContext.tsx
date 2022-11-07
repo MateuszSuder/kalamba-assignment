@@ -54,6 +54,8 @@ export const AuthProvider: FunctionComponent = ({ children }) => {
 	const logout: () => void = () => {
 		sessionStorage.removeItem("token");
 		setUser(null);
+		setExpiration(null);
+		setToken(null);
 	}
 
 	const fetcher: Fetcher = async (url, method, body) => {

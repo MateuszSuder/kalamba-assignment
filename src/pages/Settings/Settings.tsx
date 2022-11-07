@@ -1,4 +1,18 @@
-export default function Settings() {
+import React, {FunctionComponent, MouseEvent} from "react";
+import useAuth from "../../context/AuthContext";
+import {useHistory} from "react-router-dom";
+
+const Settings: FunctionComponent = () => {
+  const { logout } = useAuth();
+  const history = useHistory();
+
+
+  const logoutUser = (event: MouseEvent) => {
+    event.preventDefault();
+    logout();
+    history.push("/");
+  }
+
   return (
     <>
       <div className="settings-page">
@@ -28,7 +42,7 @@ export default function Settings() {
                 </fieldset>
               </form>
               <hr />
-              <a className="btn btn-outline-danger" href="/#/logout">
+              <a className="btn btn-outline-danger" onClick={logoutUser} href="#">
                 Or click here to logout.
               </a>
             </div>
@@ -38,3 +52,5 @@ export default function Settings() {
     </>
   );
 }
+
+export default Settings;

@@ -25,15 +25,15 @@ const Layout: React.FunctionComponent<ChildrenProp> = ({ children }: ChildrenPro
 								&nbsp;New Article
 							</a>
 						</li>
-						<li className="nav-item">
-							<a className="nav-link" href="/#/settings">
-								<i className="ion-gear-a" />
-								&nbsp;Settings
-							</a>
-						</li>
 						{
 							user ?
 								<>
+									<li className="nav-item">
+										<a className="nav-link" href="/#/settings">
+											<i className="ion-gear-a" />
+											&nbsp;Settings
+										</a>
+									</li>
 									<li className="nav-item">
 										<a className="nav-link" href={`/#/profile/${user.username}`}>
 											<img src={ user.image || "https://upload.wikimedia.org/wikipedia/commons/a/ad/Placeholder_no_text.svg" } alt="User avatar" className="user-pic" />
