@@ -1,6 +1,6 @@
 import {FunctionComponent, useEffect, useState} from "react";
 import useAuth from "../../context/AuthContext";
-import {useHistory, useLocation} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 const Login: FunctionComponent = () => {
   const history = useHistory();

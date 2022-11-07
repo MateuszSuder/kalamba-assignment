@@ -1,24 +1,22 @@
 import {useHistory, useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import getArticle from "../../services/getArticle";
 import {Article as ArticleType} from "../../types/ArticleType";
-import dateParser from "../../utils/dateParser";
 import UserAvatarLink from "../../components/UserAvatarLink";
 import UserLink from "../../components/UserLink";
 import FavoriteButton from "../../components/FavoriteButton";
 import ReactMarkdown from 'react-markdown'
 import FollowButton from "../../components/FollowButton";
+import useAuth from "../../context/AuthContext";
 
 const Article: React.FunctionComponent = () => {
   const [article, setArticle] = useState<ArticleType>();
   const { slug } = useParams<{ slug: string }>();
   const history = useHistory();
+  const { fetcher } = useAuth();
 
   useEffect(() => {
-    getArticle(slug)
-      .then(data => {
-        setArticle(data.article)
-      })
+    fetcher<{ article: ArticleType }>(`articles/${slug}`, "GET")
+      .then(data => setArticle(data.article))
       .catch(() => history.push("/"))
   }, [slug])
 

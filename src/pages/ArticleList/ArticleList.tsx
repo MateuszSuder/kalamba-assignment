@@ -1,13 +1,14 @@
 import {ArticleList as ArticleListType} from "../../types/ArticleList";
-import {useEffect, useState} from "react";
-import articleList from "../../services/getArticleList";
+import {FunctionComponent, useEffect, useState} from "react";
 import ArticleListPreview from "../../components/ArticleList/ArticleListPreview";
+import useAuth from "../../context/AuthContext";
 
-export default function ArticleList() {
+const ArticleList: FunctionComponent = () => {
   const [articles, setArticles] = useState<ArticleListType>();
+  const { fetcher } = useAuth();
 
   useEffect(() => {
-    articleList()
+    fetcher<ArticleListType>("/articles", "GET")
       .then(data => {
         setArticles(data)
       })
@@ -94,3 +95,5 @@ export default function ArticleList() {
     </>
   );
 }
+
+export default ArticleList;
