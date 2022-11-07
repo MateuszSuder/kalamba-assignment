@@ -10,7 +10,7 @@ import useAuth from "../../context/AuthContext";
 
 const Article: React.FunctionComponent = () => {
   const [article, setArticle] = useState<ArticleType>();
-  const { slug } = useParams<{ slug: string }>();
+  const { slug } = useParams<{ slug?: string }>();
   const history = useHistory();
   const { fetcher } = useAuth();
 

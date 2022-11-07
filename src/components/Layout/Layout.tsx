@@ -33,11 +33,14 @@ const Layout: React.FunctionComponent<ChildrenProp> = ({ children }: ChildrenPro
 						</li>
 						{
 							user ?
-								<li className="nav-item">
-									<a className="nav-link" href={`/#/profile/${user.username}`}>
-										{user.username}
-									</a>
-								</li>
+								<>
+									<li className="nav-item">
+										<a className="nav-link" href={`/#/profile/${user.username}`}>
+											<img src={ user.image || "https://upload.wikimedia.org/wikipedia/commons/a/ad/Placeholder_no_text.svg" } alt="User avatar" className="user-pic" />
+											{user.username}
+										</a>
+									</li>
+								</>
 								:
 								<>
 									<li className="nav-item">

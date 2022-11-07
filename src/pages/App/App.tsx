@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FunctionComponent} from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 import Article from "../Article/Article";
@@ -11,7 +11,7 @@ import Settings from "../Settings/Settings";
 import Layout from "../../components/Layout/Layout";
 import {AuthProvider} from "../../context/AuthContext";
 
-function App() {
+const App: FunctionComponent = () => {
   return (
     <Router>
       <AuthProvider>
