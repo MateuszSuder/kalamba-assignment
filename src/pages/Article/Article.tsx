@@ -34,7 +34,7 @@ const Article: React.FunctionComponent = () => {
                   <UserLink username={article.author.username} date={article.createdAt} />
                   <FollowButton username={article.author.username} />
                   &nbsp;&nbsp;
-                  <FavoriteButton favoriteCount={article.favoritesCount || 0} onFavorite={() => null}/>
+                  <FavoriteButton favoritesCount={article.favoritesCount} favorited={article.favorited} slug={article.slug} />
                 </div>
               </div>
             </div>
@@ -56,7 +56,7 @@ const Article: React.FunctionComponent = () => {
                   <UserLink username={article.author.username || ""} date={article.createdAt} />
                   <FollowButton username={article.author.username} />
                   &nbsp;
-                  <FavoriteButton favoriteCount={article.favoritesCount || 0} onFavorite={() => null}/>
+                  <FavoriteButton favoritesCount={article.favoritesCount} favorited={article.favorited} slug={article.slug} />
                 </div>
               </div>
   

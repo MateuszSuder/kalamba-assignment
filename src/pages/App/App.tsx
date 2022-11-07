@@ -12,9 +12,10 @@ import Layout from "../../components/Layout/Layout";
 import {AuthProvider} from "../../context/AuthContext";
 
 const App: FunctionComponent = () => {
+
   return (
-    <Router>
-      <AuthProvider>
+    <AuthProvider>
+      <Router>
         <Layout>
           <Switch>
             <Route path="/editor" exact component={Editor} />
@@ -29,8 +30,8 @@ const App: FunctionComponent = () => {
             <Route path="/" component={ArticleList} />
           </Switch>
         </Layout>
-      </AuthProvider>
-    </Router>
+      </Router>
+    </AuthProvider>
   );
 }
 

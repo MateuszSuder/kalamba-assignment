@@ -43,7 +43,7 @@ const ArticleList: FunctionComponent = () => {
               </div>
 
               {
-                articles && articles.articles.map(({author, title, description, slug, createdAt, favoritesCount}, id) => (
+                articles && articles.articles.map(({author, title, description, slug, createdAt, favoritesCount, favorited}, id) => (
                   <ArticleListPreview
                     author={author}
                     title={title}
@@ -51,6 +51,7 @@ const ArticleList: FunctionComponent = () => {
                     slug={slug}
                     favoritesCount={favoritesCount}
                     description={description}
+                    favorited={favorited}
                     key={title + id}
                   />
                 ))

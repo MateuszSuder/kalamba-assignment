@@ -61,7 +61,7 @@ const Profile: FunctionComponent = () => {
                   </ul>
                 </div>
                 {
-                  articles.map(({author, title, description, slug, createdAt, favoritesCount}, id) => (
+                  articles.map(({author, title, description, slug, createdAt, favoritesCount, favorited}, id) => (
                     <ArticleListPreview
                       author={author}
                       title={title}
@@ -71,6 +71,7 @@ const Profile: FunctionComponent = () => {
                       description={description}
                       wide={false}
                       key={title + id}
+                      favorited={favorited}
                     />
                   ))
                 }

@@ -16,15 +16,21 @@ export const AuthProvider: FunctionComponent = ({ children }) => {
 	const [user, setUser] = useState<User | null>(null);
 	const [expiration, setExpiration] = useState<Date | null>();
 	const [token, setToken] = useState<string | null>();
+	const [initialLoading, setInitialLoading] = useState<boolean>(true);
 	const history = useHistory();
 
 	useEffect(() => {
+		setInitialLoading(true);
 		if(!user) {
 			const sessionToken = sessionStorage.getItem("token");
 
 			if(sessionToken) {
 				setToken(sessionToken);
+			} else {
+				setInitialLoading(false)
 			}
+		} else {
+			setInitialLoading(false)
 		}
 	}, [user])
 
@@ -34,9 +40,9 @@ export const AuthProvider: FunctionComponent = ({ children }) => {
 
 	const setAuthData = (user: User) => {
 		const parsedToken = jwtDecode(user.token) as { exp: number };
-		setUser(user);
 		setExpiration(new Date(parsedToken.exp * 1000));
 		setToken(user.token);
+		setUser(user);
 		sessionStorage.setItem("token", user.token);
 	}
 
@@ -44,6 +50,7 @@ export const AuthProvider: FunctionComponent = ({ children }) => {
 		fetcher<{ user: User }>("user", "GET")
 			.then(data => setAuthData(data.user))
 			.catch(e => console.error(e))
+			.finally(() => setInitialLoading(false))
 	}
 
 	const loginUser: (email: string, password: string) => Promise<void> = async (email, password) => {
@@ -68,7 +75,7 @@ export const AuthProvider: FunctionComponent = ({ children }) => {
 				const timeToExpire = expiration.getTime() - new Date().getTime();
 				if(timeToExpire > 0) {
 					// Refresh when 10 minutes or less left
-					if((timeToExpire / 60000000) <= 10 && !url.includes("user")) {
+					if((timeToExpire / 60000) <= 10 && !url.includes("user")) {
 						await getUser();
 					}
 				}
@@ -98,15 +105,18 @@ export const AuthProvider: FunctionComponent = ({ children }) => {
 	const memoValue = useMemo(
 		() => ({
 			user,
+			token,
+			expiration,
+			initialLoading,
 			loginUser,
 			logout,
 			fetcher
-		}), [user]
+		}), [user, token, expiration, initialLoading]
 	)
 
 	return (
 		<AuthContext.Provider value={memoValue}>
-			{ children }
+				{ !initialLoading && children }
 		</AuthContext.Provider>
 	);
 };
